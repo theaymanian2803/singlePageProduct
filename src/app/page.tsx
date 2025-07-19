@@ -1,103 +1,125 @@
-import Image from "next/image";
+"use client";
+import React , {useState} from "react";
+import Image, {StaticImageData} from "next/image";
+import redSocks from "@/assets/red-socks.jpg"
+import blueSocks from "@/assets/blue-socks.jpg"
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import  {ShoppingCart , Heart ,Star , Truck , RotateCcw , Shield} from "lucide-react"
+
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-background to-muted/30">
+      <div className="container mx-auto px-4 py-8 ">
+      <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="space-y-6">
+          <Card className=" overflow-hidden bg-gradient-card  shawdow-lg">
+          <div className="aspect-square bg-white/80 backdrop-blur-sm p-8 flex items-center justify-center">
+              <Image className="w-full h-full object-contain transition-all duration-500 ease-spring transform hover:scale-105" src={redSocks} alt="image one" width={400} height={400}/>
+          </div>
+          </Card>
+            <div className="space-y-4 ">
+                <h3 className="text-lg font-semibold text-foreground">available colors</h3>
+                <div className="flex gap-4">
+                    <h3>red color </h3>
+                    <h3>BLUE COLOR color </h3>
+                </div>
+            </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <div className="space-y-8">
+              <div className="space-y-4">
+                  <Badge className="bg-primary/10 text-primary hover:bg-primary/20">Premium Collection</Badge>
+                  <h1 className="text-4xl font-bold text-foreground">Premium Cotton Socks</h1>
+                  <p className="text-lg text-muted-foreground">
+                      Experience ultimate comfort with our premium cotton socks.
+                      Crafted from the finest materials for all-day comfort and style.
+                  </p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                  <div className="flex gap-1">
+                      {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400"/>
+                      ))}
+                  </div>
+                  <span className="text-sm text-muted-foreground">(4.9) • 247 reviews</span>
+              </div>
+
+              <div className="flex items-center gap-4">
+                  <span className="text-3xl font-bold text-foreground">$24.99</span>
+                  <span className="text-lg text-muted-foreground line-through">$39.99</span>
+                  <Badge className="bg-green-100 text-green-800">37% OFF</Badge>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Truck className="w-4 h-4"/>
+                      <span>Free shipping</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Shield className="w-4 h-4"/>
+                      <span>2-year warranty</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <RotateCcw className="w-4 h-4"/>
+                      <span>30-day returns</span>
+                  </div>
+              </div>
+
+              <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                      <label className="text-sm font-medium text-foreground">Quantity:</label>
+                      <div className="flex items-center border rounded-md">
+                          <button
+
+                              className="px-3 py-2 hover:bg-muted transition-colors"
+                          >
+                              -
+                          </button>
+                          <span className="px-4 py-2 border-x">Q</span>
+                          <button
+
+                              className="px-3 py-2 hover:bg-muted transition-colors"
+                          >
+                              +
+                          </button>
+                      </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                      <Button size="lg" className="flex-1 bg-primary hover:bg-primary/90 transition-all duration-300 ease-smooth">
+                          <ShoppingCart className="w-5 h-5 mr-2"/>
+                          Add to Cart
+                      </Button>
+                      <Button size="lg" variant="outline" className="hover:bg-muted transition-all duration-300 ease-smooth">
+                          <Heart className="w-5 h-5"/>
+                      </Button>
+                  </div>
+              </div>
+
+              <div className="space-y-6">
+                  <h3 className="text-xl font-semibold text-foreground">Product Details</h3>
+                  <div className="space-y-3 text-sm text-muted-foreground">
+                      <div className="flex justify-between py-2 border-b">
+                          <span>Size</span>
+                          <span>One Size (6-11)</span>
+                      </div>
+                      <div className="flex justify-between py-2 border-b">
+                          <span>Care</span>
+                          <span>Machine wash cold</span>
+                      </div>
+                      <div className="flex justify-between py-2 border-b">
+                          <span>Origin</span>
+                          <span>Made in USA</span>
+                      </div>
+                  </div>
+              </div>
+      </div>
+      </div>
+    </div>
     </div>
   );
 }
